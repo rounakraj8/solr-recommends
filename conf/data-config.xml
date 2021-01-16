@@ -1,0 +1,22 @@
+<dataConfig>
+  <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/solr_test" user="root" password="root" />
+  <document>
+    <entity name="job_listing" pk="id" deltaImportQuery="SELECT id,    title,    description,    organization_name,    organization_url,    locations,    primary_skills,    secondary_skills,    industry,    employment_type,    min_salary,    max_salary,    min_exp_yrs,    max_exp_yrs,    created_atFROM job_listing WHERE id='${dih.delta.id}'" deltaQuery="SELECT id,    title,    description,    organization_name,    organization_url,    locations,    primary_skills,    secondary_skills,    industry,    employment_type,    min_salary,    max_salary,    min_exp_yrs,    max_exp_yrs,    created_atFROM job_listing WHERE created_at > '${dih.last_index_time}'" query="SELECT id,    title,    description,    organization_name,    organization_url,    locations,    primary_skills,    secondary_skills,    industry,    employment_type,    min_salary,    max_salary,    min_exp_yrs,    max_exp_yrs,    created_at FROM job_listing">
+      <field column="id" name="id" />
+      <field column="title" name="title"/>
+      <field column="description" name="description"/>
+      <field column="organization_name" name="organization_name"/>
+      <field column="organization_url" name="organization_url"/>
+      <field column="locations" name="locations"/>
+      <field column="primary_skills" name="primary_skills"/>
+      <field column="secondary_skills" name="secondary_skills"/>
+      <field column="industry" name="industry"/>
+      <field column="employment_type" name="employment_type"/>
+      <field column="min_salary" name="min_salary"/>
+      <field column="max_salary" name="max_salary"/>
+      <field column="min_exp_yrs" name="min_exp_yrs"/>
+      <field column="max_exp_yrs" name="max_exp_yrs"/>
+      <field column="created_at" name="created_at"/>
+    </entity>
+  </document>
+</dataConfig>
